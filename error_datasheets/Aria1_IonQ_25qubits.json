@@ -1,0 +1,31 @@
+{
+    "machine": "ionq",
+    "braketSchemaHeader": {
+      "name": "braket.device_schema.ionq.ionq_provider_properties",
+      "version": "1"
+    },
+    "fidelity": {
+      "1Q": {
+        "mean": 0.9997
+      },
+      "2Q": {
+        "mean": 0.9625
+      },
+      "readout": {
+        "mean": 0.9947
+      }
+    },
+    "timing (us)": {
+      "T1": 100000000,
+      "T2": 1000000,
+      "1Q": 135,
+      "2Q": 600,
+      "readout": 300,
+      "reset": 20
+    },
+    "errorMitigation": {
+      "braket.device_schema.error_mitigation.debias.Debias": {
+        "minimumShots": 2500
+      }
+    }
+  }

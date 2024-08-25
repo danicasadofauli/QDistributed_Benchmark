@@ -1,0 +1,23 @@
+{
+    "machine": "ionq",
+    "fidelity": {
+      "1Q": {
+        "mean": 0.99
+      },
+      "2Q": {
+        "mean": 0.97
+      },
+      "readout": {
+        "mean": 0.9958
+      }
+    },
+    "timing (us)": {
+      "T1": 15000000,
+      "T2": 400000,
+      "1Q": 40,
+      "2Q": 67.2,
+      "readout": 130,
+      "reset": 20
+    },
+    "errorMitigation": null
+  }
