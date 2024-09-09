@@ -1,5 +1,5 @@
 {
-    "machine": "ionq",
+    "machine": "spinq",
     "fidelity": {
       "1Q": {
         "mean": 0.99

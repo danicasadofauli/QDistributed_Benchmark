@@ -202,7 +202,7 @@ class CircuitRemapper:
         return new_ops
 
     def remap_circuit(self, circuit: QuantumCircuit, decompose: bool = None,
-                      decompose_list: List[str] = None):
+                      decompose_list: List[str] = None, return_non_local_ops: bool = False):
         """
         Remap the circuit for the topology.
 
@@ -233,10 +233,12 @@ class CircuitRemapper:
         idx = 0
         circ_qubits = self.topology.qubits
         deep_dict = {qubit: 0 for qubit in circ_qubits}
+        total_non_local_operations = 0
 
         for a_layer in layers:
             layer_now = Layer(a_layer, self.topology)
             non_local_ops = layer_now.non_local_operations()
+            total_non_local_operations += len(non_local_ops)
             new_layers = [[]]
 
             if non_local_ops not in [[], None]:
@@ -266,7 +268,10 @@ class CircuitRemapper:
 
         dist_circ = self._layer_to_circuit(distributed_layers, qubits, clbits)
 
-        return dist_circ
+        if return_non_local_ops:
+            return dist_circ, total_non_local_operations
+        else:
+            return dist_circ
 
     @staticmethod
     def _qubit_ops(layers: List[Layer], qubit: Qubit = None):
